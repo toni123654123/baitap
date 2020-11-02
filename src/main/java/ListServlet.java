@@ -12,13 +12,12 @@ import java.util.List;
 @WebServlet(name = "ListServlet")
 public class ListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String action = request.getParameter("action");
         int index = Integer.parseInt(request.getParameter("index"));
         if (action.equalsIgnoreCase("Delete")){
             HttpSession session = request.getSession(false);
             List<Customer> customerList = new ArrayList<>();
-
-
 
             if (session.getAttribute("customerList") != null) {
                 customerList = (List<Customer>) session.getAttribute("customerList");

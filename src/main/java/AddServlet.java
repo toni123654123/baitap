@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "AddServlet")
+@WebServlet(name = "AddServlet",urlPatterns = "/add")
 public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -22,20 +22,18 @@ public class AddServlet extends HttpServlet {
         Customer customer = new Customer(name,email,birthday,address);
         HttpSession session = request.getSession(false);
         List<Customer> customerList = new ArrayList<>();
-        customerList.add(new Customer("tuan","oke","oke","xong"));
-
 
         if (session.getAttribute("customerList") != null) {
             customerList = (List<Customer>) session.getAttribute("customerList");
         }
         customerList.add(customer);
         session.setAttribute("customerList", customerList);
-        response.sendRedirect("Add.jsp");
+        response.sendRedirect("List.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Add.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("List.jsp");
         dispatcher.forward(request, response);
     }
 }

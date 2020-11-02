@@ -29,7 +29,7 @@
             <h2 class="text-center">Add Customer</h2>
         </div>
         <div class="panel-body">
-            <form method="post">
+            <form method="post" action="/add">
                 <div class="form-group">
                     <label>Name:</label>
                     <input required="true" type="text" class="form-control"  name="name">

@@ -41,22 +41,21 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <c:forEach var="item" items="${customerList}" varStatus="loop">
+                    <c:forEach items="${customerList}" var="item" varStatus="loop">
                 <tr>
                     <td>${loop.index + 1}</td>
-                    <td>${item.name}</td>
-                    <td>${item.email}</td>
-                    <td>${item.birthday}</td>
-                    <td>${item.address}</td>
+                    <td>${item.getName()}</td>
+                    <td>${item.getEmail()}</td>
+                    <td>${item.getBirthday()}</td>
+                    <td>${item.getAddress()}</td>
                     <td>
                         <a href="add?id=${loop.index}">
                             <button class="btn btn-warning">Edit</button>
                         </a>
-
                     </td>
                     <td>
                         <form method="post">
-                        <input name="index" value="${loop.index}" style="display: none">
+                        <input name="index" value="${loop.index + 1}" style="display: none">
                         <button class="btn btn-danger" name="action" value="Delete">Delete</button>
                         </form>
                     </td>
